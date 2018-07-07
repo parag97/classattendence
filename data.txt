@@ -1,0 +1,43 @@
+create table user_info(
+uid int AUTO_INCREMENT KEY NOT NULL,
+fname varchar(36) default 0 not null,
+lname varchar(36) default 0 not null,
+gender char(4),
+dob date not null DEFAULT '2000-01-01',
+course varchar(16) not null default 'not'
+);
+
+create table attnd(
+uid int AUTO_INCREMENT KEY NOT NULL,
+one TINYINT(1) default 0,
+two TINYINT(1) default 0,
+three TINYINT(1) default 0,
+four TINYINT(1) default 0,
+five TINYINT(1) default 0,
+six TINYINT(1) default 0,
+seven TINYINT(1) default 0,
+eight TINYINT(1) default 0,
+nine TINYINT(1) default 0,
+ten TINYINT(1) default 0,
+eleven TINYINT(1) default 0,
+twelve TINYINT(1) default 0,
+thirteen TINYINT(1) default 0,
+fourteen TINYINT(1) default 0,
+fifteen TINYINT(1) default 0,
+sixteen TINYINT(1) default 0,
+seventeen TINYINT(1) default 0,
+eighteen TINYINT(1) default 0,
+nineteen TINYINT(1) default 0,
+twenty TINYINT(1) default 0,
+twentyone TINYINT(1) default 0,
+twentytwo TINYINT(1) default 0,
+twentythree TINYINT(1) default 0,
+twentyfour TINYINT(1) default 0,
+twentyfive TINYINT(1) default 0,
+twentysix TINYINT(1) default 0,
+twentyseven TINYINT(1) default 0,
+twentyeight TINYINT(1) default 0,
+twentynine TINYINT(1) default 0,
+thirty TINYINT(1) default 0,
+thirtyone TINYINT(1) default 0
+);
