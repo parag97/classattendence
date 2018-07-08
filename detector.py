@@ -9,7 +9,7 @@ import cv2
 import numpy as np
 
 rec=cv2.face.LBPHFaceRecognizer_create()
-rec.read('trainingData.yml')
+rec.read('trainingData1.yml')
 id=0
 names={1:"MAYANK",6:"MAYANK",3:"PARAG",4:"PARAG",5:"ANKUR",7:"AKHIL"}
 font=cv2.FONT_HERSHEY_SIMPLEX

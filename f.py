@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-faceDetect = cv2.CascadeClassifier("C:\Python3.6\Lib\site-packages\cv2\data\haarcascade_frontalface_default.xml");
+faceDetect = cv2.CascadeClassifier("haarcascade_frontalface_default.xml");
 print(faceDetect)
 cam=cv2.VideoCapture(0);
 

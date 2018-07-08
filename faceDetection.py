@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-faceDetect = cv2.CascadeClassifier("C:\Python3.6\Lib\site-packages\cv2\data\haarcascade_frontalface_alt2.xml");
+faceDetect = cv2.CascadeClassifier("haarcascade_frontalface_default.xml");
 cv2.namedWindow("output", cv2.WINDOW_NORMAL)  
 # Load an color image in grayscale
 img = cv2.imread('test.jpg',0)

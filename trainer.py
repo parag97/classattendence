@@ -9,7 +9,6 @@ import os
 import cv2
 import numpy as np
 from PIL  import Image
-
 recognizer=cv2.face.LBPHFaceRecognizer_create()
 path='images'
 
@@ -20,7 +19,11 @@ def getImagesWithID(path):
     for imagePath in imagePaths:
         faceImg=Image.open(imagePath).convert('L')
         faceNp=np.array(faceImg,'uint8')
-        ID=int(os.path.split(imagePath)[-1].split('.')[1])
+
+        try:
+            ID=int(os.path.split(imagePath)[-1].split('.')[1])
+        except:
+            print(os.path.split(imagePath)[-1].split('.')[1],print(imagePath))
         faces.append(faceNp)
         IDs.append(ID)
         cv2.imshow('training',faceNp)
@@ -29,7 +32,7 @@ def getImagesWithID(path):
 
 Ids,faces=getImagesWithID(path)
 recognizer.train(faces,Ids)
-recognizer.save('trainingData.yml')
+recognizer.save('trainingData1.yml')
 cv2.destroyAllWindows()
 
     
