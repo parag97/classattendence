@@ -5,6 +5,7 @@ import os
 rec=cv2.face.LBPHFaceRecognizer_create()
 rec.read('trainingData1.yml')
 id1=0
+present = []
 names={1:"MAYANK",6:"MAYANK",3:"PARAG",4:"PARAG",5:"ANKUR",7:"AKHIL"}
 font=cv2.FONT_HERSHEY_SIMPLEX
 faceDetect=cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
@@ -32,13 +33,36 @@ while(True):
                 if(ID==id1):
                     sampleNum=sampleNum+1
             except:
-                print(os.path.split(imagePath)[-1].split('.')[1],print(imagePath)) 
-            cv2.imwrite("images/User."+str(id1)+"."+str(sampleNum)+".jpg",gray[y:y+h,x:x+w])
+                print(os.path.split(imagePath)[-1].split('.')[1],print(imagePath))
+            if(sampleNum<= 500):
+                cv2.imwrite("images/User."+str(id1)+"."+str(sampleNum)+".jpg",gray[y:y+h,x:x+w])
+            present.append(id1)
         cv2.rectangle(img,(x,y),(x+w,y+h),(0,255,0),2)
         id1,conf=rec.predict(gray[y:y+h,x:x+w])
         cv2.putText(img,names[id1],(x,y+h),font,1,(0,0,255))
     cv2.imshow('face',img)
     if(cv2.waitKey(1)==ord('q')):
-        break
+        break 
 cam.release()
 cv2.destroyAllWindows()
+present = list(set(present))
+try:
+    present.remove(0)
+except:
+    pass
+print(present)
+import pymysql
+import datetime
+try:
+    db = pymysql.connect("localhost","master","rajnikant","attendence" )
+    cursor = db.cursor()
+except:
+    print("database not reachable")
+for i in present:
+    sql = "UPDATE `attnd` SET `%s` = '1' WHERE `attnd`.`uid` = '%s';"
+    args = (int(datetime.date.today().strftime("%d")),int(i))
+    print(i,datetime.date.today().strftime("%d"),args)
+    print(sql)
+    cursor.execute(sql, args)
+cursor.close()
+db.close()
